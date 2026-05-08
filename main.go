@@ -9,8 +9,11 @@ import (
 	"time"
 )
 
-func GenCrocoTooth() int {
+func init() {
 	rand.Seed(time.Now().UnixNano())
+}
+
+func GenCrocoTooth() int {
 	return rand.Intn(13) + 1
 }
 
