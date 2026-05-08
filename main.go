@@ -3,18 +3,18 @@ package main
 import (
 	"fmt"
 	"math/rand"
-	"time"
 	"os"
 	"os/signal"
 	"syscall"
+	"time"
 )
 
-func GenCrocoTooth() int{
+func GenCrocoTooth() int {
 	rand.Seed(time.Now().UnixNano())
 	return rand.Intn(13) + 1
 }
 
-func main(){
+func main() {
 	var steps int
 	sigs := make(chan os.Signal, 1)
 	signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM)
@@ -22,6 +22,7 @@ func main(){
 	fmt.Println("Welcome to the 'Crocodile Dentist' game! This version was made in Go.")
 	tooth := GenCrocoTooth()
 	var choose int
+	var pressedMask uint16
 	go func() {
 		<-sigs
 		fmt.Println("\nПока, игрок! Увидимся...")
@@ -31,17 +32,22 @@ func main(){
 	for {
 		fmt.Print("Выберите зуб/Choose the tooth:")
 		_, err := fmt.Scan(&choose)
-	if err != nil {
-	    time.Sleep(10 * time.Millisecond) 
-	    fmt.Println("\nНеверный ввод/Non-correct input!")
-	    var discard string
-	    fmt.Scanln(&discard)
-	    continue
-	}
+		if err != nil {
+			time.Sleep(10 * time.Millisecond)
+			fmt.Println("\nНеверный ввод/Non-correct input!")
+			var discard string
+			fmt.Scanln(&discard)
+			continue
+		}
 		if choose < 1 || choose > 13 {
 			fmt.Println("Зубов всего 13!/Only 13 teeth available!")
 			continue
 		}
+		if (pressedMask>>uint(choose))&1 == 1 {
+			fmt.Println("Этот зуб уже нажат! Выберите другой.")
+			continue
+		}
+		pressedMask |= (1 << uint(choose))
 		if choose != tooth {
 			fmt.Println("Вам повезло/You got lucky!")
 			steps++
