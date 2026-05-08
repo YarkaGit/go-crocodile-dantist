@@ -14,7 +14,7 @@
 
 1. Склонируйте репозиторий:
    ```bash
-   git clone https://github.com
+   git clone https://github.com/YarkaGit/go-crocodile-dantist
    ```
 2. Перейдите в папку с проектом:
    ```bash
@@ -47,7 +47,7 @@ You'll need [Go](https://go.dev) installed to run this game.
 
 1. Clone the repository:
 ```bash
-git clone https://github.com
+git clone https://github.com/YarkaGit/go-crocodile-dantist
 ```
 2. Change to the project folder:
 ```bash
