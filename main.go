@@ -60,6 +60,8 @@ func main() {
 			fmt.Println("You were holding for... ", steps, " steps!")
 			tooth = GenCrocoTooth()
 			steps = 0
+			pressedMask = 0
+			time.Sleep(3 * time.Second)
 			fmt.Println("Новая партия/New match!")
 		}
 	}
