@@ -33,11 +33,11 @@ func main() {
 		os.Exit(0)
 	}()
 	for {
-		fmt.Print("Выберите зуб/Choose the tooth: ")
+		fmt.Print("Выберите зуб/Choose the tooth:")
 		_, err := fmt.Scan(&choose)
 		if err != nil {
 			time.Sleep(10 * time.Millisecond)
-			fmt.Println("Некорректный ввод/Non-correct input!")
+			fmt.Println("\nНеверный ввод/Non-correct input!")
 			var discard string
 			fmt.Scanln(&discard)
 			continue
@@ -46,44 +46,14 @@ func main() {
 			fmt.Println("Зубов всего 13!/Only 13 teeth available!")
 			continue
 		}
-		if (pressedMask >> uint(choose)) & 1 == 1 {
-			fmt.Println("Этот зуб уже нажат! Выберите другой./This tooth is already pressed! Choose another one.")
+		if (pressedMask>>uint(choose))&1 == 1 {
+			fmt.Println("Этот зуб уже нажат! Выберите другой.")
 			continue
 		}
-
 		pressedMask |= (1 << uint(choose))
 		if choose != tooth {
-			fmt.Println("Вам повезло!/You got lucky!")
+			fmt.Println("Вам повезло/You got lucky!")
 			steps++
-			
-			// --- ХОД ИИ ---
-			fmt.Println("Ход ИИ.../AI is thinking...")
-			time.Sleep(1 * time.Second)
-			var botstep int
-			for {
-				botstep = GenCrocoTooth()
-				if (pressedMask >> uint(botstep)) & 1 == 0 {
-					break
-				}
-			}
-			pressedMask |= (1 << uint(botstep))
-			fmt.Println("Ход ИИ: ", botstep)
-			
-			if botstep == tooth {
-				fmt.Println("ИИ проиграл! Вы победили!")
-				fmt.Println("AI lost! You won!")
-				fmt.Println("Робот держался... ", steps, " ходов!")
-				fmt.Println("AI was holding for... ", steps, " steps!")
-				tooth = GenCrocoTooth()
-				steps = 0
-				pressedMask = 0
-				time.Sleep(3 * time.Second)
-				fmt.Println("Новая партия/New match!")
-				continue
-			} else {
-				fmt.Println("ИИ повезло!/AI got lucky!")
-				steps++
-			}
 		} else {
 			fmt.Println("Вы проиграли/Game Over!")
 			fmt.Println("Вы продержались... ", steps, " ходов!")
