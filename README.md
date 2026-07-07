@@ -7,8 +7,8 @@
 *   **Чистый выход**: Корректно завершается при нажатии `CTRL+C` с прощальным сообщением.
 *   **Счетчик ходов**: Игра считает, сколько зубов ты успел нажать до проигрыша.
 *   **Бесконечный цикл**: После проигрыша игра автоматически начинается заново с новым случайным зубом.
-*   **ИИ**: Теперь в игре(начиная с версии 0.02) есть ИИ-противник.
-*   **Мультиплеер** Теперь(начиная с версии 0.03) можно поиграть с другом на 1 ПК!
+*   **ИИ**: Теперь в игре есть ИИ-противник.
+*   **Мультиплеер** Теперь можно поиграть с другом на 1 ПК!
 
 ## 🚀 Как запустить
 
@@ -41,8 +41,8 @@ A simple console implementation of the popular game "Crocodile Dentist," written
 * **Clean exit**: Cleanly exits when pressing CTRL+C with a farewell message.
 * **Turn counter**: The game counts how many teeth you pressed before losing.
 * **Infinite loop**: After losing, the game automatically restarts with a new random tooth.
-* **AI**: The game(starting from version 0.02) now has an AI opponent.
-* **Multiplayer**: Now(starting from version 0.03) you can play with a friend!
+* **AI**: The game now has an AI opponent.
+* **Multiplayer**: Now you can play with a friend!
 
 ## 🚀 How to run
 
