@@ -1,5 +1,5 @@
 # 🐊 Crocodile Dentist (Go version)
-
+## RU:
 Простая консольная реализация популярной игры "Крокодил Дантист", написанная на **Go**. Испытай свою удачу и постарайся не нажать на больной зуб!
 
 ## ✨ Особенности
@@ -7,6 +7,8 @@
 *   **Чистый выход**: Корректно завершается при нажатии `CTRL+C` с прощальным сообщением.
 *   **Счетчик ходов**: Игра считает, сколько зубов ты успел нажать до проигрыша.
 *   **Бесконечный цикл**: После проигрыша игра автоматически начинается заново с новым случайным зубом.
+*   **ИИ**: Теперь в игре есть ИИ-противник.
+*   **Мультиплеер** Теперь можно поиграть с другом на 1 ПК!
 
 ## 🚀 Как запустить
 
@@ -30,9 +32,8 @@
 
 ---
 *Сделано с любовью (и зубами) на Go.*
-EN:
 # 🐊 Crocodile Dentist (Go version)
-
+## EN:
 A simple console implementation of the popular game "Crocodile Dentist," written in **Go**. Try your luck and try not to press a toothache!
 
 ## ✨ Features
@@ -40,6 +41,8 @@ A simple console implementation of the popular game "Crocodile Dentist," written
 * **Clean exit**: Cleanly exits when pressing CTRL+C with a farewell message.
 * **Turn counter**: The game counts how many teeth you pressed before losing.
 * **Infinite loop**: After losing, the game automatically restarts with a new random tooth.
+* **AI**: The game now has an AI opponent.
+* **Multiplayer**: Now you can play with a friend!
 
 ## 🚀 How to run
 
