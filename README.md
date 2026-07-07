@@ -32,9 +32,8 @@
 
 ---
 *Сделано с любовью (и зубами) на Go.*
-## EN:
 # 🐊 Crocodile Dentist (Go version)
-
+## EN:
 A simple console implementation of the popular game "Crocodile Dentist," written in **Go**. Try your luck and try not to press a toothache!
 
 ## ✨ Features
