@@ -20,6 +20,7 @@ var (
 	toothInput  int
 	maxsteps    uint32
 	p2maxsteps  uint32
+	round       int
 )
 
 func PrintTooth() {
@@ -77,6 +78,11 @@ func p2Play() {
 		fmt.Println("Вы продержались... ", p2steps, " ходов!")
 		fmt.Println("You were holding for... ", p2steps, " steps!")
 		tooth = GenCrocoTooth(toothInput)
+		if steps > maxsteps && steps != 0 {
+			maxsteps = steps
+			time.Sleep(1 * time.Second)
+			fmt.Println("УРА/YAY!!! Ваш новый рекорд/Your new record: ", maxsteps)
+		}
 		if p2steps > p2maxsteps && p2steps != 0 {
 			p2maxsteps = p2steps
 			time.Sleep(1 * time.Second)
@@ -85,8 +91,9 @@ func p2Play() {
 		steps = 0
 		p2steps = 0
 		pressedMask = 0
+		round += 1
 		time.Sleep(3 * time.Second)
-		fmt.Println("Новая партия/New match!")
+		fmt.Println("Раунд ", round, "/Round ", round, "!")
 	}
 }
 
@@ -108,11 +115,13 @@ func main() {
 		} else {
 			fmt.Println("Спешим вас огорчить, но вы не набрали никакого рекорда за сегодня, у вас 0/We are sorry, but you didn't made any record today, you have 0!")
 		}
-		if isWithBot == false && p2maxsteps != 0{
+		if isWithBot == false && p2maxsteps != 0 {
 			fmt.Println("Максимальный счет второго игрока на сегодня/2th Player max record for today: ", p2maxsteps) // то-же самое для игрока 2/same for player 2
 		} else if isWithBot == false {
 			fmt.Println("Спешим вас огорчить, Игрок 2, но вы не набрали никакого рекорда за сегодня, у вас 0/We are sorry, Player 2, but you didn't made any record today, you have 0!")
 		}
+		fmt.Println("Всего раундов: ", round)
+		time.Sleep(1 * time.Second)
 		os.Exit(0)
 	}()
 
@@ -219,8 +228,9 @@ func main() {
 					steps = 0
 					aisteps = 0
 					pressedMask = 0
+					round += 1
 					time.Sleep(3 * time.Second)
-					fmt.Println("Новая партия/New match!")
+					fmt.Println("Раунд ", round, "/Round ", round, "!")
 				} else {
 					fmt.Println("ИИ повезло!/AI got lucky!")
 					aisteps++
@@ -238,12 +248,18 @@ func main() {
 				time.Sleep(1 * time.Second)
 				fmt.Println("УРА/YAY!!! Ваш новый рекорд/Your new record: ", maxsteps)
 			}
+			if p2steps > p2maxsteps && p2steps != 0 {
+				p2maxsteps = p2steps
+				time.Sleep(1 * time.Second)
+				fmt.Println("УРА/YAY!!! Игрок 2, ваш новый рекорд/Player 2, your new record is: ", maxsteps)
+			}
 			steps = 0
 			p2steps = 0
 			aisteps = 0
 			pressedMask = 0
+			round += 1
 			time.Sleep(3 * time.Second)
-			fmt.Println("Новая партия/New match!")
+			fmt.Println("Раунд ", round, "/Round ", round, "!")
 		}
 	}
 }
