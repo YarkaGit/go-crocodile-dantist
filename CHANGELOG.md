@@ -2,6 +2,21 @@
 
 ---
 
+## [0.04] — Хардкор, Цвета и Турнирные Рекорды / Hardcore, Colors, and Tournament Records
+
+### Added (Добавлено)
+*   **Динамический выбор размера челюсти:** Добавлена валидация ввода количества зубов на старте (строго от 12 до 16 зубов) с раздельными понятными ошибками для слишком маленького или большого размера. / **Dynamic Jaw Sizing:** Added initial validation for the total teeth count (strictly 12 to 16) featuring distinct error logs for both under-sized and over-sized inputs.
+*   **Счетчик раундов:** Введена переменная `round` для отслеживания текущего круга игры, превращающая одиночные матчи в полноценную турнирную сессию. / **Round Counter:** Introduced a `round` variable to track current game cycles, transforming single matches into a full-scale tournament session.
+*   **Механика «Ярость Крокодила»:** Начиная с 3-го раунда, игра автоматически переключается в хардкорный режим — крокодил генерирует сразу два разных больных зуба (`tooth` и `tooth2`). / **"Crocodile Rage" Mechanics:** Starting from Round 3, the game automatically scales up difficulty — the croc now generates two distinct painful teeth at once (`tooth` и `tooth2`).
+*   **Защита от дубликатов зубов:** Добавлен цикл проверки, исключающий случайное совпадение номеров первого и второго больных зубов в хардкорном режиме. / **Anti-Duplicate Safety Loop:** Implemented a validation routine ensuring that the first and second painful teeth never spawn on the exact same position during hardcore rounds.
+*   **Полноценная статистика сессии:** В горутину обработки сигналов (`Ctrl+C`) внедрён вывод максимальных рекордов для обоих игроков по отдельности, а также общего числа сыгранных раундов. / **Full Session Statistics:** The termination signal goroutine (`Ctrl+C`) now tracks and prints peak scores for both players individually, alongside the total number of played rounds.
+*   **Задержка перед выходом:** Добавлен минутный буфер `time.Sleep(1 * time.Second)` перед закрытием приложения, чтобы игрок успел ознакомиться со своей финальной статистикой. / **Exit Delay Buffer:** Added a short `time.Sleep(1 * time.Second)` freeze right before `os.Exit(0)` to give players enough time to read their end-game stats.
+*   **ANSI Цвета в TUI:** Функция `PrintTooth()` полностью обновлена — теперь выбитые зубы `[X]` тускнеют серым цветом (`\033[90m`), а доступные зубы подсвечиваются ярким белым (`\033[37m`). / **ANSI Colors in TUI:** Upgraded the `PrintTooth()` engine — pressed teeth `[X]` now fade out in gray (`\033[90m`), while active options light up in bright white (`\033[37m`).
+### Changed / Optimized (Изменено и Оптимизировано)
+*   **Оптимизация ввода через префиксы:** В логику выбора режима добавлен `strings.HasPrefix`. Теперь игра не требует ввода слова целиком — достаточно написать первую букву («и»/«а» для Бота, «ч»/«h» для Человека), что сводит к нулю шанс ошибиться при вводе. / **Prefix-Based Input Optimization:** Integrated `strings.HasPrefix` into the mode selection logic. The engine no longer requires full words — typing just the first letter ("и"/"a" for AI, "ч"/"h" for Human) is enough, completely eliminating typing friction.
+
+---
+
 ## [0.03] — Мультиплеер, Отрисовка UI и Оптимизация / Multiplayer, UI Rendering, and Optimization
 
 ### Added (Добавлено)
