@@ -9,6 +9,9 @@
 *   **Бесконечный цикл**: После проигрыша игра автоматически начинается заново с новым случайным зубом.
 *   **ИИ**: Теперь в игре есть ИИ-противник.
 *   **Мультиплеер** Теперь можно поиграть с другом на 1 ПК!
+*   **Рекорды и Раунды** Теперь в игре есть рекорды за сегодняшнюю сессию и раунды!
+*   **Злой Кроко** Теперь в игре(начиная с третьего раунда) есть 2 больных зуба вместо 1!
+*   **Цвета для зубов** Теперь в игре есть цвета для челюсти Крокодила!
 
 ## 🚀 Как запустить
 
@@ -28,7 +31,7 @@
    ```
 
 ## 🎮 Правила игры
-Введите номер зуба от **1 до 13**. Если вам повезло — крокодил не захлопнет пасть, и вы сможете продолжить. Если попадете на больной зуб — игра окончена!
+Введите номер зуба от **1 до 13(или другое значение, я не знаю)**. Если вам повезло — крокодил не захлопнет пасть, и вы сможете продолжить. Если попадете на больной зуб — игра окончена!
 
 ---
 *Сделано с любовью (и зубами) на Go.*
@@ -43,6 +46,9 @@ A simple console implementation of the popular game "Crocodile Dentist," written
 * **Infinite loop**: After losing, the game automatically restarts with a new random tooth.
 * **AI**: The game now has an AI opponent.
 * **Multiplayer**: Now you can play with a friend!
+* **Records and Rounds** The game now tracks records for today' session and rounds!
+* **Angry Croco'** Starting from the third round, there are now 2 aching teeth instead of 1!
+* **Tooth Colors** The game now features colors for the Crocodile's jaw!
 
 ## 🚀 How to run
 
@@ -62,7 +68,7 @@ go run main.go
 ```
 
 ## 🎮 Game Rules
-Enter a tooth number from **1 to 13**. If you're lucky, the crocodile won't close its mouth, and you can continue. If you hit a bad tooth, it's game over!
+Enter a tooth number from **1 to 13(or other value, IDK)**. If you're lucky, the crocodile won't close its mouth, and you can continue. If you hit a bad tooth, it's game over!
 
 ---
 *Made with love (and teeth) in Go.*
