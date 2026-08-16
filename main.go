@@ -108,8 +108,10 @@ func main() {
 		} else {
 			fmt.Println("Спешим вас огорчить, но вы не набрали никакого рекорда за сегодня, у вас 0/We are sorry, but you didn't made any record today, you have 0!")
 		}
-		if isWithBot == false {
+		if isWithBot == false && p2maxsteps != 0{
 			fmt.Println("Максимальный счет второго игрока на сегодня/2th Player max record for today: ", p2maxsteps) // то-же самое для игрока 2/same for player 2
+		} else if isWithBot == false {
+			fmt.Println("Спешим вас огорчить, Игрок 2, но вы не набрали никакого рекорда за сегодня, у вас 0/We are sorry, Player 2, but you didn't made any record today, you have 0!")
 		}
 		os.Exit(0)
 	}()
