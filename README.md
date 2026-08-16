@@ -12,6 +12,7 @@
 *   **Рекорды и Раунды** Теперь в игре есть рекорды за сегодняшнюю сессию и раунды!
 *   **Злой Кроко** Теперь в игре(начиная с третьего раунда) есть 2 больных зуба вместо 1!
 *   **Цвета для зубов** Теперь в игре есть цвета для челюсти Крокодила!
+*   **Выбор количества зубов** Теперь можно выбрать между 12ти и 16ти зубами!
 
 ## 🚀 Как запустить
 
@@ -49,6 +50,7 @@ A simple console implementation of the popular game "Crocodile Dentist," written
 * **Records and Rounds** The game now tracks records for today' session and rounds!
 * **Angry Croco'** Starting from the third round, there are now 2 aching teeth instead of 1!
 * **Tooth Colors** The game now features colors for the Crocodile's jaw!
+* **Choice of tooth count** You can now choose between 12 and 16 teeth!
 
 ## 🚀 How to run
 
