@@ -21,6 +21,7 @@ var (
 	maxsteps    uint32
 	p2maxsteps  uint32
 	round       int
+	tooth2      int
 )
 
 func PrintTooth() {
@@ -86,7 +87,7 @@ func p2Play() {
 		if p2steps > p2maxsteps && p2steps != 0 {
 			p2maxsteps = p2steps
 			time.Sleep(1 * time.Second)
-			fmt.Println("УРА/YAY!!! Игрок 2, ваш новый рекорд/Player 2, your new record is: ", maxsteps)
+			fmt.Println("УРА/YAY!!! Игрок 2, ваш новый рекорд/Player 2, your new record is: ", p2maxsteps)
 		}
 		steps = 0
 		p2steps = 0
@@ -171,6 +172,13 @@ func main() {
 	}
 
 	tooth = GenCrocoTooth(toothInput)
+	tooth = GenCrocoTooth(toothInput)
+	for {
+		tooth2 = GenCrocoTooth(toothInput)
+		if tooth2 != tooth {
+			break
+		}
+	}
 	var choose int
 	var aisteps int
 
@@ -196,70 +204,138 @@ func main() {
 
 		pressedMask |= (1 << uint(choose))
 
-		if choose != tooth {
-			fmt.Println("[ИГРОК 1]: Вам повезло!/You got lucky!")
-			steps++
+		if round < 3 {
+			if choose != tooth {
+				fmt.Println("[ИГРОК 1]: Вам повезло!/You got lucky!")
+				steps++
 
-			if isWithBot {
-				fmt.Println("Ход ИИ.../AI is thinking...")
-				time.Sleep(1 * time.Second)
-				var botstep int
-				for {
-					botstep = GenCrocoTooth(toothInput)
-					if (pressedMask>>uint(botstep))&1 == 0 {
-						break
+				if isWithBot {
+					fmt.Println("Ход ИИ.../AI is thinking...")
+					time.Sleep(1 * time.Second)
+					var botstep int
+					for {
+						botstep = GenCrocoTooth(toothInput)
+						if (pressedMask>>uint(botstep))&1 == 0 {
+							break
+						}
+						time.Sleep(10 * time.Millisecond) // сделал так что-бы проц не страдал/i made this way to stop the CPU from torturing itself
 					}
-					time.Sleep(10 * time.Millisecond) // сделал так что-бы проц не страдал/i made this way to stop the CPU from torturing itself
-				}
-				pressedMask |= (1 << uint(botstep))
-				fmt.Println("Ход ИИ: ", botstep)
+					pressedMask |= (1 << uint(botstep))
+					fmt.Println("Ход ИИ: ", botstep)
 
-				if botstep == tooth {
-					fmt.Println("ИИ проиграл! Вы победили!")
-					fmt.Println("AI lost! You won!")
-					fmt.Println("Робот держался... ", aisteps, " ходов!")
-					fmt.Println("AI was holding for... ", aisteps, " steps!")
-					tooth = GenCrocoTooth(toothInput)
-					if steps > maxsteps && steps != 0 {
-						maxsteps = steps
-						time.Sleep(1 * time.Second)
-						fmt.Println("УРА/YAY!!! Ваш новый рекорд/Your new record: ", maxsteps)
+					if botstep == tooth {
+						fmt.Println("ИИ проиграл! Вы победили!")
+						fmt.Println("AI lost! You won!")
+						fmt.Println("Робот держался... ", aisteps, " ходов!")
+						fmt.Println("AI was holding for... ", aisteps, " steps!")
+						tooth = GenCrocoTooth(toothInput)
+						if steps > maxsteps && steps != 0 {
+							maxsteps = steps
+							time.Sleep(1 * time.Second)
+							fmt.Println("УРА/YAY!!! Ваш новый рекорд/Your new record: ", maxsteps)
+						}
+						steps = 0
+						aisteps = 0
+						pressedMask = 0
+						round += 1
+						time.Sleep(3 * time.Second)
+						fmt.Println("Раунд ", round, "/Round ", round, "!")
+					} else {
+						fmt.Println("ИИ повезло!/AI got lucky!")
+						aisteps++
 					}
-					steps = 0
-					aisteps = 0
-					pressedMask = 0
-					round += 1
-					time.Sleep(3 * time.Second)
-					fmt.Println("Раунд ", round, "/Round ", round, "!")
 				} else {
-					fmt.Println("ИИ повезло!/AI got lucky!")
-					aisteps++
+					p2Play()
 				}
 			} else {
-				p2Play()
+				fmt.Println("Вы проиграли/Game Over!")
+				fmt.Println("Вы продержались... ", steps, " ходов!")
+				fmt.Println("You were holding for... ", steps, " steps!")
+				tooth = GenCrocoTooth(toothInput)
+				if steps > maxsteps && steps != 0 {
+					maxsteps = steps
+					time.Sleep(1 * time.Second)
+					fmt.Println("УРА/YAY!!! Ваш новый рекорд/Your new record: ", maxsteps)
+				}
+				if p2steps > p2maxsteps && p2steps != 0 {
+					p2maxsteps = p2steps
+					time.Sleep(1 * time.Second)
+					fmt.Println("УРА/YAY!!! Игрок 2, ваш новый рекорд/Player 2, your new record is: ", p2maxsteps)
+				}
+				steps = 0
+				p2steps = 0
+				aisteps = 0
+				pressedMask = 0
+				round += 1
+				time.Sleep(3 * time.Second)
+				fmt.Println("Раунд ", round, "/Round ", round, "!")
 			}
 		} else {
-			fmt.Println("Вы проиграли/Game Over!")
-			fmt.Println("Вы продержались... ", steps, " ходов!")
-			fmt.Println("You were holding for... ", steps, " steps!")
-			tooth = GenCrocoTooth(toothInput)
-			if steps > maxsteps && steps != 0 {
-				maxsteps = steps
-				time.Sleep(1 * time.Second)
-				fmt.Println("УРА/YAY!!! Ваш новый рекорд/Your new record: ", maxsteps)
+			if choose != tooth && choose != tooth2 {
+				fmt.Println("[ИГРОК 1]: Вам повезло!/You got lucky!")
+				steps++
+
+				if isWithBot {
+					fmt.Println("Ход ИИ.../AI is thinking...")
+					time.Sleep(1 * time.Second)
+					var botstep int
+					for {
+						botstep = GenCrocoTooth(toothInput)
+						if (pressedMask>>uint(botstep))&1 == 0 {
+							break
+						}
+						time.Sleep(10 * time.Millisecond) // сделал так что-бы проц не страдал/i made this way to stop the CPU from torturing itself
+					}
+					pressedMask |= (1 << uint(botstep))
+					fmt.Println("Ход ИИ: ", botstep)
+
+					if botstep == tooth || botstep == tooth2 {
+						fmt.Println("ИИ проиграл! Вы победили!")
+						fmt.Println("AI lost! You won!")
+						fmt.Println("Робот держался... ", aisteps, " ходов!")
+						fmt.Println("AI was holding for... ", aisteps, " steps!")
+						tooth = GenCrocoTooth(toothInput)
+						if steps > maxsteps && steps != 0 {
+							maxsteps = steps
+							time.Sleep(1 * time.Second)
+							fmt.Println("УРА/YAY!!! Ваш новый рекорд/Your new record: ", maxsteps)
+						}
+						steps = 0
+						aisteps = 0
+						pressedMask = 0
+						round += 1
+						time.Sleep(3 * time.Second)
+						fmt.Println("Раунд ", round, "/Round ", round, "!")
+					} else {
+						fmt.Println("ИИ повезло!/AI got lucky!")
+						aisteps++
+					}
+				} else {
+					p2Play()
+				}
+			} else {
+				fmt.Println("Вы проиграли/Game Over!")
+				fmt.Println("Вы продержались... ", steps, " ходов!")
+				fmt.Println("You were holding for... ", steps, " steps!")
+				tooth = GenCrocoTooth(toothInput)
+				if steps > maxsteps && steps != 0 {
+					maxsteps = steps
+					time.Sleep(1 * time.Second)
+					fmt.Println("УРА/YAY!!! Ваш новый рекорд/Your new record: ", maxsteps)
+				}
+				if p2steps > p2maxsteps && p2steps != 0 {
+					p2maxsteps = p2steps
+					time.Sleep(1 * time.Second)
+					fmt.Println("УРА/YAY!!! Игрок 2, ваш новый рекорд/Player 2, your new record is: ", p2maxsteps)
+				}
+				steps = 0
+				p2steps = 0
+				aisteps = 0
+				pressedMask = 0
+				round += 1
+				time.Sleep(3 * time.Second)
+				fmt.Println("Раунд ", round, "/Round ", round, "!")
 			}
-			if p2steps > p2maxsteps && p2steps != 0 {
-				p2maxsteps = p2steps
-				time.Sleep(1 * time.Second)
-				fmt.Println("УРА/YAY!!! Игрок 2, ваш новый рекорд/Player 2, your new record is: ", maxsteps)
-			}
-			steps = 0
-			p2steps = 0
-			aisteps = 0
-			pressedMask = 0
-			round += 1
-			time.Sleep(3 * time.Second)
-			fmt.Println("Раунд ", round, "/Round ", round, "!")
 		}
 	}
 }
