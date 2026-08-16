@@ -9,6 +9,10 @@
 *   **Бесконечный цикл**: После проигрыша игра автоматически начинается заново с новым случайным зубом.
 *   **ИИ**: Теперь в игре(начиная с версии 0.02) есть ИИ-противник.
 *   **Мультиплеер** Теперь(начиная с версии 0.03) можно поиграть с другом на 1 ПК!
+*   **Рекорды и Раунды** Теперь в игре(начиная с версии 0.04) есть рекорды за сегодняшнюю сессию и раунды!
+*   **Злой Кроко** Теперь в игре(начиная с версии 0.04 и третьего раунда) есть 2 больных зуба вместо 1!
+*   **Цвета для зубов** Теперь в игре(начиная с версии 0.04) есть цвета для челюсти Крокодила!
+*   **Выбор количества зубов** Теперь(начиная с версии 0.04) можно выбрать между 12ти и 16ти зубами!
 
 ## 🚀 Как запустить
 
@@ -28,7 +32,7 @@
    ```
 
 ## 🎮 Правила игры
-Введите номер зуба от **1 до 13**. Если вам повезло — крокодил не захлопнет пасть, и вы сможете продолжить. Если попадете на больной зуб — игра окончена!
+Введите номер зуба от **1 до 13(или другое значение, я не знаю)**. Если вам повезло — крокодил не захлопнет пасть, и вы сможете продолжить. Если попадете на больной зуб — игра окончена!
 
 ---
 *Сделано с любовью (и зубами) на Go.*
@@ -42,7 +46,11 @@ A simple console implementation of the popular game "Crocodile Dentist," written
 * **Turn counter**: The game counts how many teeth you pressed before losing.
 * **Infinite loop**: After losing, the game automatically restarts with a new random tooth.
 * **AI**: The game(starting from version 0.02) now has an AI opponent.
-* **Multiplayer**: Now(starting from version 0.03) you can play with a friend!
+* **Multiplayer**: Now(starting from version 0.03) you can play with a friend on 1 PC!
+* **Records and Rounds** The game(starting from version 0.04) now tracks records for today' session and rounds!
+* **Angry Croco'** Starting from the third round AND version 0.04, there are now 2 aching teeth instead of 1!
+* **Tooth Colors** The game(starting from version 0.04) now features colors for the Crocodile's jaw!
+* **Choice of tooth count** You(starting from version 0.04) can now choose between 12 and 16 teeth!
 
 ## 🚀 How to run
 
@@ -62,7 +70,7 @@ go run main.go
 ```
 
 ## 🎮 Game Rules
-Enter a tooth number from **1 to 13**. If you're lucky, the crocodile won't close its mouth, and you can continue. If you hit a bad tooth, it's game over!
+Enter a tooth number from **1 to 13(or other value, IDK)**. If you're lucky, the crocodile won't close its mouth, and you can continue. If you hit a bad tooth, it's game over!
 
 ---
 *Made with love (and teeth) in Go.*
