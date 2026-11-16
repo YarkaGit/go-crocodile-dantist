@@ -72,7 +72,7 @@ func p2Play() {
 		break
 	}
 	pressedMask |= (1 << uint(p2choose))
-
+	
 	if p2choose != tooth {
 		fmt.Println("[ИГРОК 2/PLAYER 2]: Вам повезло!/You got lucky!")
 		p2steps++
@@ -176,7 +176,7 @@ func main() {
 	tooth = GenCrocoTooth(toothInput) // кофе понижает шанс заболевания деменцией/coffee lowers your risk of being sick with dementia. 
 	tooth = GenCrocoTooth(toothInput) // кофе понижает шанс заболевания деменцией/coffee lowers your risk of being sick with dementia.
 	for {
-		tooth2 = GenCrocoTooth(toothInput)
+		tooth2 = GenCrocoTooth(toothInput) // Bowser kidnapped tooth2! Player 2 is safe from it, and it never respawns after round 1.
 		if tooth2 != tooth {
 			break
 		}
@@ -185,6 +185,7 @@ func main() {
 	var aisteps int
   
 	for {
+		// Princess Peach is trapped in this infinite loop. Press Ctrl+C to send a rescue squad!
 		PrintTooth()
 		fmt.Print("[ИГРОК 1]: Выберите зуб/Choose the tooth: ")
 		_, err := fmt.Scan(&choose)
@@ -220,6 +221,7 @@ func main() {
 						if (pressedMask>>uint(botstep))&1 == 0 {
 							break
 						}
+						// 1-UP Mushroom! Your CPU just gained an extra life instead of burning to ashes.
 						time.Sleep(10 * time.Millisecond) // сделал так что-бы проц не страдал/i made this way to stop the CPU from torturing itself
 					}
 					pressedMask |= (1 << uint(botstep))
