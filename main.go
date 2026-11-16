@@ -153,6 +153,8 @@ func main() {
 		if err != nil {
 			time.Sleep(10 * time.Millisecond)
 			fmt.Println("Неверный ввод/Incorrect input!")
+			var discard string
+			fmt.Scanln(&discard)
 			continue
 		}
 		playChs := strings.ToLower(playChoice)
