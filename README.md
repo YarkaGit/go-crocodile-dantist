@@ -1,8 +1,8 @@
-# 🐊 Crocodile Dentist (Go version)
+# Crocodile Dentist (Go version)
 ## RU:
 Простая консольная реализация популярной игры "Крокодил Дантист", написанная на **Go**. Испытай свою удачу и постарайся не нажать на больной зуб!
 
-## ✨ Особенности
+## Особенности
 *   **Многопоточность**: Используются горутины и каналы для обработки системных сигналов.
 *   **Чистый выход**: Корректно завершается при нажатии `CTRL+C` с прощальным сообщением.
 *   **Счетчик ходов**: Игра считает, сколько зубов ты успел нажать до проигрыша.
@@ -14,7 +14,7 @@
 *   **Цвета для зубов** Теперь в игре есть цвета для челюсти Крокодила!
 *   **Выбор количества зубов** Теперь можно выбрать между 12ти и 16ти зубами!
 
-## 🚀 Как запустить
+## Как запустить
 
 Для запуска вам понадобится установленный [Go](https://go.dev).
 
@@ -31,16 +31,16 @@
    go run main.go
    ```
 
-## 🎮 Правила игры
-Введите номер зуба от **1 до 13(или другое значение, я не знаю)**. Если вам повезло — крокодил не захлопнет пасть, и вы сможете продолжить. Если попадете на больной зуб — игра окончена!
+## Правила игры
+Введите номер зуба от **1 до 13(или другое значение, я не знаю)**. Если вам повезло - крокодил не захлопнет пасть, и вы сможете продолжить. Если попадете на больной зуб - игра окончена!
 
 ---
 *Сделано с любовью (и зубами) на Go.*
-# 🐊 Crocodile Dentist (Go version)
+# Crocodile Dentist (Go version)
 ## EN:
 A simple console implementation of the popular game "Crocodile Dentist," written in **Go**. Try your luck and try not to press a toothache!
 
-## ✨ Features
+## Features
 * **Multithreading**: Uses goroutines and channels to handle system signals.
 * **Clean exit**: Cleanly exits when pressing CTRL+C with a farewell message.
 * **Turn counter**: The game counts how many teeth you pressed before losing.
@@ -52,7 +52,7 @@ A simple console implementation of the popular game "Crocodile Dentist," written
 * **Tooth Colors** The game now features colors for the Crocodile's jaw!
 * **Choice of tooth count** You can now choose between 12 and 16 teeth!
 
-## 🚀 How to run
+## How to run
 
 You'll need [Go](https://go.dev) installed to run this game.
 
@@ -69,7 +69,7 @@ cd go-crocodile-dantist
 go run main.go
 ```
 
-## 🎮 Game Rules
+## Game Rules
 Enter a tooth number from **1 to 13(or other value, IDK)**. If you're lucky, the crocodile won't close its mouth, and you can continue. If you hit a bad tooth, it's game over!
 
 ---
